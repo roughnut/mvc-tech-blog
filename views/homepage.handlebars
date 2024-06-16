@@ -1,0 +1,12 @@
+
+    <h1>Blog Posts</h1>
+    {{#each posts}}
+        <div class="blog-post card card-rounded">
+            <h2>{{this.blog_title}}</h2>
+            <h3>By: {{this.user.username}}</h3>
+            <p>{{this.blog_text}}</p>
+            <p>{{this.blog_date}}</p>
+        </div>
+    {{else}}
+        <p>No blog posts found.</p>
+    {{/each}}

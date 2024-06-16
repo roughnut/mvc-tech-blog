@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/users/dashboard">Dashboard</a></li>
+    {{#if logged_in}}
+    <li><a href="#" id="logout">Logout</a></li>
+    {{else}}
+    <li><a href="/login">Login</a></li>
+    {{/if}}
+  </ul>
+</nav>
+
+<script src="/js/logout.js"></script>
