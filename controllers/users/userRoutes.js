@@ -2,6 +2,23 @@ const router = require("express").Router();
 const { User, BlogPosts, Comments } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+//signup route
+router.post("/signup", async (req, res) => {
+  console.log(req.body);
+  try {
+    const userData = await User.create(req.body);
+    req.session.save(() => {
+      req.session.username = userData.username;
+      req.session.logged_in = true;
+
+      res.status(200).json(userData);
+    });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
+//login route
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
