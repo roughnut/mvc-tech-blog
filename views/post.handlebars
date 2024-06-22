@@ -1,0 +1,23 @@
+
+    <h1>Post</h1>
+    {{#if post}}
+        <div class="blog-post card card-rounded">
+                <h2>{{post.blog_title}}</h2>
+                <p>{{post.blog_text}}</p>
+                <p>{{post.user.username}}</p>
+                <p>{{post.blog_date}}</p>
+        </div>
+        <div>
+            <h3>Comments</h3>
+            {{#each post.comments}}
+            <div class="blog-comment card card-rounded">
+                <p>{{this.comment_text}}</p>
+                <p>{{this.user.username}}</p>
+                <p>{{this.comment_date}}</p>
+            </div>
+            {{/each}}
+            {{> comment-form}}
+        </div>
+    {{else}}
+        <p>No post found.</p>
+    {{/if}}

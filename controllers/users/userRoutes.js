@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, BlogPosts, Comments } = require("../../models");
 const withAuth = require("../../utils/auth");
+const { format } = require('date-fns');
 
 //signup route
 router.post("/signup", async (req, res) => {
@@ -39,6 +40,7 @@ router.post("/login", async (req, res) => {
     req.session.save(() => {
       req.session.username = userData.username;
       req.session.logged_in = true;
+      req.session.user_id = userData.id;
 
       res.json({ message: `You're logging in!` });
     });
@@ -50,6 +52,9 @@ router.post("/login", async (req, res) => {
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const blogData = await BlogPosts.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
       include: [
         {
           model: User,
@@ -69,6 +74,17 @@ router.get("/dashboard", withAuth, async (req, res) => {
     });
 
     const posts = blogData.map((post) => post.get({ plain: true }));
+
+    posts.forEach(post => {
+      post.blog_date = format(post.blog_date, 'd MMMM, yyyy');
+      if (post.comments) {
+        post.comments.forEach(comment => {
+          comment.comment_date = format(comment.comment_date, 'd MMMM, yyyy');
+        });
+      }
+    });
+
+
     console.log(posts);
 
     res.render("dashboard", {
