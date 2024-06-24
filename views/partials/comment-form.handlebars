@@ -1,5 +1,21 @@
-            <form action="/blogs/comment/{{post.id}}" method="POST">
-            <label for="comment-text">Add comment</label>
-            <textarea type="text" id="comment-text" name="comment-text" rows="4" cols="50"></textarea>
-            <button type="submit" class="btn" href="/blogs/comment/{{post.id}}">Submit</button>
-            </form>
+<form class="form comment-form">
+  <div class="form-group">
+    <label for="comment-text">Add comment</label>
+    <textarea
+      type="text"
+      id="comment-text"
+      name="comment-text"
+      rows="4"
+      cols="50"
+    ></textarea>
+    <input type="hidden" id="blogpost_id" value="{{post.id}}">
+  </div>
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn"
+    >Submit</button>
+  </div>
+</form>
+
+<script src="/js/comment.js"></script>

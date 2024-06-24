@@ -20,7 +20,7 @@ app.set('view engine', 'handlebars');
 const sesh = {
   secret: process.env.SESSION_SECRET,
   cookie: {
-    maxAge: 1000 * 60 * 60, // 2 mins
+    maxAge: 1000 * 60 * 60,
     // secure: process.env.NODE_ENV === "production",
     httpOnly: true,
   },

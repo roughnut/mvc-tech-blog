@@ -5,8 +5,8 @@
     <h2>{{this.blog_title}}</h2>    
     <p>{{this.blog_text}}</p>
     <p>Author: You(!), {{this.blog_date}}</p>
-    <a href="/api/edit/{{this.id}}" class="btn">Edit</a>
-    <a href="/api/delete/{{this.id}}" class="btn">Delete</a>
+    <a href="/blogs/edit/{{this.id}}" class="btn">Edit</a>
+    <button id="delete-blog" data-id="{{this.id}}" class="btn">Delete</button>
   </div>
       <h3>Comments</h3>
   <div class="blog-comment card card-rounded">
@@ -18,3 +18,5 @@
 {{else}}
   <p>No posts. You should write something!</p>
 {{/each}}
+
+<script src="/js/deleteBlog.js"></script>
