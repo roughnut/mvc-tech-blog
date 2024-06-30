@@ -12,7 +12,7 @@ Challenge is to build a CMS style blog using the Model-View-Controller paradigm.
 
 ## Usage
 
-[Render URL]( "link to deployed site") - to be added
+[Render URL](https://mvc-tech-blog-8a1s.onrender.com/ "link to deployed site")
 
 ## User Story
 
