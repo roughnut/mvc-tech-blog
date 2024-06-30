@@ -1,14 +1,14 @@
-# Bootcamp Challenge 14 - MVC Tech Blog
+# Bootcamp Challenge 14 - MVC Blog
 
 ## Description
 
-Challenge is to build a CMS style tech blog using the Model-View-Controller paradigm.
+Challenge is to build a CMS style blog using the Model-View-Controller paradigm.
 
 [User Story](#user-story) and [Acceptance Criteria](#acceptance-criteria) are below.
 
 ## Screenshot
 
-![screenshot](path_to_screenshot "link to screenshot") - to be added
+![app screenshot](./assets/images/tech-blog-screenshot.png "link to screenshot")
 
 ## Usage
 
