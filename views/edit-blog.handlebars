@@ -1,0 +1,18 @@
+<h2>Edit blog</h2>
+<form class="edit-blog-form">
+
+    <div class="mb-3">
+        <label for="blog_title" class="form-label">Title:</label>
+        <input type="text" class="form-control input-lg-screen" id="blog_title" name="blog_title" value="{{post.blog_title}}" required>
+    </div>
+    <div class="mb-3">
+        <label for="blog_text" class="form-label">Text:</label>
+        <textarea class="form-control input-lg-screen" id="blog_text" name="blog_text" rows="4">{{post.blog_text}}</textarea>
+    </div>
+    <input type="hidden" id="blogpost_id" value="{{post.id}}">
+    <div class="mb-3">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>
+
+<script src="/js/editBlog.js"></script>

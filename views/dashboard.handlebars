@@ -1,22 +1,30 @@
-<h1>Your Posts</h1>
-<a class="btn" href="/blogs/new">Add new</a>
-{{#each posts}}
-  <div class="blog-post card card-rounded">
-    <h2>{{this.blog_title}}</h2>    
-    <p>{{this.blog_text}}</p>
-    <p>Author: You(!), {{this.blog_date}}</p>
-    <a href="/blogs/edit/{{this.id}}" class="btn">Edit</a>
-    <button id="delete-blog" data-id="{{this.id}}" class="btn">Delete</button>
-  </div>
-      <h3>Comments</h3>
-  <div class="blog-comment card card-rounded">
-    {{#each this.comments}}
-    <p>{{this.comment_text}}</p>
-    <p>Author: {{this.user.username}}, {{this.comment_date}}</p>
-    {{/each}}
-  </div>
-{{else}}
-  <p>No posts. You should write something!</p>
-{{/each}}
+<div class="container mt-5">
+  <h1 class="mb-4">Your Posts</h1>
+  <a class="btn btn-primary mb-3" href="/blogs/new">Add new</a>
+  {{#each posts}}
+    <div class="blog-post card mb-3">
+      <div class="card-body">
+        <h2 class="card-title">{{this.blog_title}}</h2>    
+        <p class="card-text">{{this.blog_text}}</p>
+        <p class="card-text"><small class="text-muted">Author: You(!), {{this.blog_date}}</small></p>
+        <a href="/blogs/edit/{{this.id}}" class="btn btn-secondary">Edit</a>
+        <button id="delete-blog" data-id="{{this.id}}" class="btn btn-danger">Delete</button>
+      </div>
+      <div class="card-footer">
+        <h3>Comments</h3>
+        {{#each this.comments}}
+          <div class="blog-comment">
+            <p>{{this.comment_text}}</p>
+            <p><small class="text-muted">Author: {{this.user.username}}, {{this.comment_date}}</small></p>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{else}}
+    <p>No posts. You should write something!</p>
+  {{/each}}
+</div>
 
+{{#if posts}}
 <script src="/js/deleteBlog.js"></script>
+{{/if}}

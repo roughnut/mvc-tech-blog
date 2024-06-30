@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -9,6 +8,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 require ('dotenv').config();
 
 const app = express();
+const path = require("path");
+
 const PORT = process.env.PORT || 3001;
 
 // if helpers functions are created later { helpers } needs to be an option exphbs.create({ helpers })
@@ -36,6 +37,9 @@ app.use(session(sesh));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
+//bootstrap
+app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+app.use("/js", express.static(__dirname + "/node_modules/bootstrap/dist/js"));
 
 app.use(routes);
 

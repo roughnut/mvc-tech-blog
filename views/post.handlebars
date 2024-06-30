@@ -1,23 +1,26 @@
 
-    <h1>Post</h1>
-    {{#if post}}
-        <div class="blog-post card card-rounded">
-                <h2>{{post.blog_title}}</h2>
-                <p>{{post.blog_text}}</p>
-                <p>{{post.user.username}}</p>
-                <p>{{post.blog_date}}</p>
-        </div>
-        <div>
-            <h3>Comments</h3>
-            {{#each post.comments}}
-            <div class="blog-comment card card-rounded">
-                <p>{{this.comment_text}}</p>
-                <p>{{this.user.username}}</p>
-                <p>{{this.comment_date}}</p>
+    <div class="container mt-4">
+        <h1 class="mb-3">Post</h1>
+        {{#if post}}
+            <div class="blog-post card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{post.blog_title}}</h2>
+                    <p class="card-text">{{post.blog_text}}</p>
+                    <footer class="blockquote-footer">{{post.user.username}} on <cite title="Source Title">{{post.blog_date}}</cite></footer>
+                </div>
             </div>
-            {{/each}}
+            <div>
+                {{#each post.comments}}
+                <div class="blog-comment card mb-2">
+                    <div class="card-body">
+                        <p class="card-text">{{this.comment_text}}</p>
+                        <footer class="blockquote-footer">{{this.user.username}} on <cite title="Source Title">{{this.comment_date}}</cite></footer>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
             {{> comment-form}}
-        </div>
+    </div>
     {{else}}
         <p>No post found.</p>
     {{/if}}

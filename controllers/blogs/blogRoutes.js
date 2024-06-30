@@ -21,6 +21,30 @@ router.get("/new", (req, res) => {
   }
 });
 
+router.get("/edit/:id", async (req, res) => {
+  if (!req.session.logged_in) {
+    res.render("login");
+    return;
+  }
+
+  try {
+    const postToEdit = await BlogPosts.findByPk(req.params.id);
+    const post = postToEdit.get({plain:true});
+
+    console.log(post.id);
+
+    res.render("edit-blog", {
+      post, 
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      username: req.session.username,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
 // single blog route
 router.get("/:id", async (req, res) => {
   if (!req.session.logged_in) {
@@ -110,6 +134,26 @@ router.post("/new", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.post("/edit", async (req, res) => {
+  console.log(req.body);
+  const {id, blog_title, blog_text} = req.body;
+  try {
+    const editedBlog = await BlogPosts.update({
+      blog_title,
+      blog_text
+    },
+  {
+    where: {
+      id: id
+    }
+  });
+    res.status(201).json(editedBlog );
+  } catch (error) {
+        console.error(error);
+        res.status(500).json(error);
+  }
+})
 
 router.delete("/delete/:id", async (req, res) => {
   console.log(req.params.id);

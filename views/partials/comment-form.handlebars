@@ -1,19 +1,18 @@
-<form class="form comment-form">
-  <div class="form-group">
-    <label for="comment-text">Add comment</label>
+<form class="comment-form">
+  <div class="mb-3">
+    <label for="comment-text" class="form-label">Add comment</label>
     <textarea
-      type="text"
+      class="form-control"
       id="comment-text"
       name="comment-text"
       rows="4"
-      cols="50"
     ></textarea>
-    <input type="hidden" id="blogpost_id" value="{{post.id}}">
   </div>
-  <div class="form-group">
+  <input type="hidden" id="blogpost_id" value="{{post.id}}">
+  <div class="mb-3">
     <button
       type="submit"
-      class="btn"
+      class="btn btn-primary"
     >Submit</button>
   </div>
 </form>

@@ -1,0 +1,27 @@
+:root {
+  --bs-link-color: #6c757d; /* Grey */
+}
+
+a {
+    text-decoration: none;
+    color: var(--bs-link-color);
+}
+
+a:hover {
+    color: #4a90e2; /* Muted blue for contrast */
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav.align-items-right {
+    text-align: right;
+  }
+  .navbar-nav.align-items-right .nav-item {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) { /* Adjusts for large screens */
+    .input-lg-screen {
+        width: 50% !important; /* Forces the width to be 50% on larger screens */
+    }
+}

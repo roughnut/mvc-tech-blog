@@ -12,7 +12,6 @@ async function handleDeleteBlog (event) {
     });
 
     if (deleteBlog.ok) {
-        alert("Blog deleted.");
         window.location.reload();
     } else {
         return alert("Can't delete blog right now, sorry.");
